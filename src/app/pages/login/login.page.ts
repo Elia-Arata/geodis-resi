@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Route, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth-service';
 
 @Component({
@@ -13,7 +14,7 @@ export class LoginPage implements OnInit {
     password: new FormControl('', { validators: [Validators.required] }),
   });
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit() {}
   login() {
@@ -21,7 +22,10 @@ export class LoginPage implements OnInit {
 
     const { email, password } = this.form.getRawValue();
     if (email && password) {
-      this.authService.login(email, password);
+      this.authService.login(email, password).subscribe((result) => {
+        console.log(result);
+        this.router.navigateByUrl('tabs');
+      });
     }
   }
 }
