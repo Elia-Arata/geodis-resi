@@ -1,0 +1,7 @@
+{
+  "name": "geodis-resi",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
