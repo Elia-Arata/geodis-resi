@@ -1,12 +1,12 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Home
-    </ion-title>
+    <div class="logo">
+      <img src="../../assets/logo.jpg" />
+    </div>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  
-
+  <div class="background-page" ><app-task-card  *ngFor="let item of tasksList" [descrizione]="item.descrizione" [nome]="item.nome" [stato]="item.completed"></app-task-card>
+  </div>
 </ion-content>
